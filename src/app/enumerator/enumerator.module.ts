@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { HttpClientModule } from '@angular/common/http';
 import { EnumeratorRoutingModule } from './enumerator-routing.module';
 import { EnumeratorComponent } from './enumerator.component';
 
@@ -11,7 +11,8 @@ import { EnumeratorComponent } from './enumerator.component';
   ],
   imports: [
     CommonModule,
-    EnumeratorRoutingModule
+    EnumeratorRoutingModule,
+    HttpClientModule
   ]
 })
 export class EnumeratorModule { }

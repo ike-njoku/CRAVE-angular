@@ -24,6 +24,7 @@ body {
   background-color: var(--background-color);
   margin: 0px;
   padding: 0px;
+  transition: all 0.7s;
 }
 
 
@@ -675,7 +676,7 @@ body {
 /* ------------------box shadows-------------------- */
 
 .shd-half {
-  box-shadow: 0.5px 0.5px 0.5px 0.5px gray;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.2);
 }
 
 .shd-1 {
@@ -688,6 +689,9 @@ body {
 
 .shd-3 {
   box-shadow: 6px 6px 6px 6px gray;
+}
+.shd-10 {
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 
