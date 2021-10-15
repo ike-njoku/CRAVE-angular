@@ -12,7 +12,8 @@ import { EnumeratorComponent } from './enumerator.component';
   imports: [
     CommonModule,
     EnumeratorRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
   ]
 })
 export class EnumeratorModule { }
