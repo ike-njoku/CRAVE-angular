@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ServerResponseDTO } from 'src/app/server-response-dto';
+import { EnumeratorService } from './enumerator.service';
 
 @Component({
   selector: 'app-create-enumerator',
@@ -7,9 +10,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEnumeratorComponent implements OnInit {
 
-  constructor() { }
+  submitting: boolean = false;
+  constructor(
+    private formBuilder: FormBuilder,
+    private enumeratorService: EnumeratorService
+  ) { }
+
+  createEnumeratorForm: FormGroup = this.formBuilder.group({
+    firstName: [null, Validators.required],
+    lastName: [null, Validators.required],
+    emailAddress: [null, [Validators.required, Validators.email]],
+    primaryPhone: [null, Validators.required],
+    secondaryPhone: [null, Validators.required],
+  });
 
   ngOnInit(): void {
+  }
+
+  checkEmail() {
+
+  }
+
+  createEnumerator() {
+    this.submitting = true;
+    this.enumeratorService.createEnumerator(this.createEnumeratorForm.value)
+      .subscribe(
+        (response: ServerResponseDTO) => {
+          console.log(response.status);
+          this.submitting = false;
+        },
+        (error: any) => {
+          console.log(error)
+        }
+      )
   }
 
 }
