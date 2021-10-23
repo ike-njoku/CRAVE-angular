@@ -36,11 +36,13 @@ export class CreateEnumeratorComponent implements OnInit {
     this.enumeratorService.createEnumerator(this.createEnumeratorForm.value)
       .subscribe(
         (response: ServerResponseDTO) => {
-          console.log(response.status);
+          console.log(response)
+          console.log(response.message);
           this.submitting = false;
         },
         (error: any) => {
-          console.log(error)
+          console.log(error);
+          this.submitting = false;
         }
       )
   }

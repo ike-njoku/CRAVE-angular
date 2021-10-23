@@ -16,7 +16,7 @@ export class EnumeratorService {
   ) { }
 
   createEnumerator(enumerator: CreateEnumeratorDto): Observable<any> {
-    const subUrl = `api/emumerator/create`;
+    const subUrl = `api/enumerator/create`;
     return this.http.post<any>(`${environment.baseUrl}/${subUrl}`, enumerator)
       .pipe(
         (catchError(this.handleError))
