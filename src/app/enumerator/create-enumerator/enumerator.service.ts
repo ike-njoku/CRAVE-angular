@@ -23,6 +23,13 @@ export class EnumeratorService {
       )
   }
 
+  getAllEnumerators(): Observable<any> {
+    return this.http.get(`${environment.baseUrl}/api/enumerator/list`)
+    .pipe(
+      (catchError(this.handleError))
+    )
+  }
+
   private handleError(error: any) {
     console.log(error);
     return throwError('Error: Could not completer request')

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ServerResponseDTO } from 'src/app/server-response-dto';
+import { Router } from '@angular/router';
+import { ServerResponseDTO } from 'src/app/dto-interfaces/server-response-dto';
 import { EnumeratorService } from './enumerator.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class CreateEnumeratorComponent implements OnInit {
   submitting: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
-    private enumeratorService: EnumeratorService
+    private enumeratorService: EnumeratorService,
+    private router: Router
   ) { }
 
   createEnumeratorForm: FormGroup = this.formBuilder.group({
@@ -31,13 +33,24 @@ export class CreateEnumeratorComponent implements OnInit {
 
   }
 
+  getEnumerators() {
+    this.enumeratorService.getAllEnumerators()
+      .subscribe(
+        (response: any) => {
+          console.log(response)
+        },
+        (error: any) => console.log(error)
+      )
+  }
+
   createEnumerator() {
     this.submitting = true;
     this.enumeratorService.createEnumerator(this.createEnumeratorForm.value)
       .subscribe(
         (response: ServerResponseDTO) => {
-          console.log(response)
-          console.log(response.message);
+          if(response.status='success') {
+            this.router.navigate(['sign-in']);
+          }
           this.submitting = false;
         },
         (error: any) => {
