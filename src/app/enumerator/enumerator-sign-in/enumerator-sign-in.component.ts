@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 @Component({
   selector: 'app-enumerator-sign-in',
@@ -14,14 +15,19 @@ export class EnumeratorSignInComponent implements OnInit {
   })
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
   }
 
   signIn() {
-
+    this.authService.enumeratorSignIn(this.enumeratorSignInForm.value)
+      .subscribe(
+        (response: any) => console.log(response),
+        (error: any) => {console.log(error)}
+      )
   }
 
 
