@@ -1,0 +1,13 @@
+<form [formGroup]="enumeratorSignInForm">
+  <div style="padding:auto; padding-top: 5%;" class="mg-2">
+    <div style="width: 50vh;" class="pad-4 mg-auto shd-10 card rad-5 grid">
+      <div class="col-12 text-center">
+        <img height="250" width="250" src="../../../assets/logo/CRAVE-logo-no-bg.png" alt="CRAVE-logo-transparent-bg">
+      </div>
+      <div class="col-12 pad-1 font-bold text-center">Enumerator Sign-in</div>
+      <input formControlName="emailAddress" class="col-12" type="text" placeholder="Email Address">
+      <input formControlName="password" class="col-12" type="password" placeholder="Password">
+      <button *ngIf="enumeratorSignInForm.valid || submitting" (click)="signIn()" class="col-12 mg-t-4 pad-3" type="submit">Create Enumerator</button>
+    </div>
+  </div>
+</form>x

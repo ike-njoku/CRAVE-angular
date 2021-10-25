@@ -49,7 +49,7 @@ export class CreateEnumeratorComponent implements OnInit {
       .subscribe(
         (response: ServerResponseDTO) => {
           if(response.status='success') {
-            this.router.navigate(['sign-in']);
+            this.router.navigate(['enumerator/sign-in']);
           }
           this.submitting = false;
         },
