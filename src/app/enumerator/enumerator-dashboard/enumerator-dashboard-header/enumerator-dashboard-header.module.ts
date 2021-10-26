@@ -10,6 +10,7 @@ import { EnumeratorDashboardHeaderComponent } from './enumerator-dashboard-heade
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [EnumeratorDashboardHeaderComponent]
 })
 export class EnumeratorDashboardHeaderModule { }
