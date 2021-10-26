@@ -48,8 +48,8 @@ export class CreateEnumeratorComponent implements OnInit {
     this.enumeratorService.createEnumerator(this.createEnumeratorForm.value)
       .subscribe(
         (response: ServerResponseDTO) => {
-          if(response.status='success') {
-            this.router.navigate(['enumerator/sign-in']);
+          if (response.status == 'success') {
+            this.router.navigate(['enumerator/sign-in'])
           }
           this.submitting = false;
         },
