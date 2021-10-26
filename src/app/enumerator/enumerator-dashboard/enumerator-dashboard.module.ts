@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EnumeratorDashboardRoutingModule } from './enumerator-dashboard-routing.module';
 import { EnumeratorDashboardComponent } from './enumerator-dashboard.component';
+import { EnumeratorDashboardHeaderModule } from './enumerator-dashboard-header/enumerator-dashboard-header.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { EnumeratorDashboardComponent } from './enumerator-dashboard.component';
   ],
   imports: [
     CommonModule,
-    EnumeratorDashboardRoutingModule
+    EnumeratorDashboardRoutingModule,
+    EnumeratorDashboardHeaderModule
   ]
 })
 export class EnumeratorDashboardModule { }
