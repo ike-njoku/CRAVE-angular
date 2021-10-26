@@ -16,7 +16,7 @@ export class AuthenticationService {
   ) { }
 
   enumeratorSignIn(enumerator: EnumeratorSignInDto): Observable<any> {
-    const subUrl = '';
+    const subUrl = 'api/enumerator/sign-in';
     return this.http.post<CreateEnumeratorDto>(`${environment.baseUrl}/${subUrl}`, enumerator)
       .pipe(
         (catchError(this.handleError))
