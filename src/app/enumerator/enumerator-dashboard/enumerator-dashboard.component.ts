@@ -13,6 +13,10 @@ export class EnumeratorDashboardComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router
   ) { }
+  toggleSideNav() {
+    document.getElementById('side-nav')?.classList.toggle('active');
+    document.getElementById('main')?.classList.toggle('active');
+  }
 
   ngOnInit(): void {
   }

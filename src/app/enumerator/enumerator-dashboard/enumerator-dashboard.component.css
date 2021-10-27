@@ -6,6 +6,7 @@
   overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.05);
   position: fixed;
+  transition: all 0.5s;
 }
 
 #side-nav button {
@@ -17,12 +18,21 @@
   text-align: left;
 }
 
+#side-nav.active {
+  margin-left: -25%;
+}
+
 #main {
   margin-left: 25%;
   background-image: url('../../../assets/logo/CRAVE-logo-no-bg.png');
   background-position: center;
   min-height: 100%;
   background-repeat: no-repeat;
+  transition: all 0.5s;
+}
+
+#main.active {
+  margin-left: 0;
 }
 
 .card {
