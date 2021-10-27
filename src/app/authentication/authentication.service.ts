@@ -41,12 +41,17 @@ export class AuthenticationService {
     localStorage.setItem(this.userNameStringIdentifier, this.activeUser.firstName)
   }
 
+  getActiveEnumerator() {
+    let sessionDetail: any = localStorage.getItem(this.enumeratorAccessTokenStrringIdentifier);
+    return this.activeUser = this.jwtDecod(JSON.stringify(sessionDetail));
+  }
+
   getActiveUserName(): string | null {
     return localStorage.getItem(this.userNameStringIdentifier)
   }
 
   private handleError(error: any) {
-    console.log(error, 'color: darkblue')
+    console.log(error);
     return throwError('Could not Sign in at this moment')
   }
 
