@@ -21,7 +21,10 @@ export class EnumeratorRoutesGuard implements CanActivate, CanActivateChild, Can
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    console.log('can load guard hit');
+    let returnValue: boolean = false;
+    if (this.authService.getActiveEnumerator().role === 'Enumerator') returnValue = true;
+    return returnValue;
   }
   canDeactivate(
     component: unknown,
@@ -33,7 +36,7 @@ export class EnumeratorRoutesGuard implements CanActivate, CanActivateChild, Can
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log('can load guard hit');
+    console.log('can load guard hit');
     let returnValue: boolean = false;
     if (this.authService.getActiveEnumerator().role === 'Enumerator') returnValue = true;
     return returnValue;

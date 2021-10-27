@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', component: EnumeratorComponent },
   { path: 'create', loadChildren: () => import('./create-enumerator/create-enumerator.module').then(m => m.CreateEnumeratorModule) },
   { path: 'sign-in', loadChildren: () => import('./enumerator-sign-in/enumerator-sign-in.module').then(m => m.EnumeratorSignInModule) },
-  { path: 'dashboard', canLoad: [EnumeratorRoutesGuard], loadChildren: () => import('./enumerator-dashboard/enumerator-dashboard.module').then(m => m.EnumeratorDashboardModule)}
+  { path: 'dashboard', canActivateChild: [EnumeratorRoutesGuard], canLoad: [EnumeratorRoutesGuard], loadChildren: () => import('./enumerator-dashboard/enumerator-dashboard.module').then(m => m.EnumeratorDashboardModule)}
 ];
 
 @NgModule({
