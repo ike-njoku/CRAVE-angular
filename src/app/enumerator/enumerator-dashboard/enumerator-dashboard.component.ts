@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 @Component({
@@ -9,14 +10,16 @@ import { AuthenticationService } from 'src/app/authentication/authentication.ser
 export class EnumeratorDashboardComponent implements OnInit {
 
   constructor(
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
   signOut() {
-
+    this.authService.signOut();
+    this.router.navigate(['/enumerator/sign-in']);
   }
 
 }

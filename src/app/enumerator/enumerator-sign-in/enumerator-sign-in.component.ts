@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { ServerResponseDTO } from 'src/app/dto-interfaces/server-response-dto';
 
 @Component({
   selector: 'app-enumerator-sign-in',
@@ -16,7 +18,8 @@ export class EnumeratorSignInComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +28,9 @@ export class EnumeratorSignInComponent implements OnInit {
   signIn() {
     this.authService.enumeratorSignIn(this.enumeratorSignInForm.value)
       .subscribe(
-        (response: any) => console.log(response),
+        (response: ServerResponseDTO) => {
+          if (response.status == 'success') this.router.navigate(['enumerator/dashboard']);
+        },
         (error: any) => {console.log(error)}
       )
   }

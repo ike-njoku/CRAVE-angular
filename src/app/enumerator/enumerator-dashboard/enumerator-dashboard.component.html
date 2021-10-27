@@ -1,7 +1,27 @@
-<app-enumerator-dashboard-header></app-enumerator-dashboard-header>
+<app-enumerator-dashboard-header class="sticky-top relative"></app-enumerator-dashboard-header>
 <!-- side nav -->
 <div id="side-nav">
   <button>My Enrollments</button>
   <button>New Enrollment</button>
-  <button (click)="signOut()">Sign Out</button>
+  <div>
+    <button class="sticky-bottom relative" (click)="signOut()">Sign Out</button>
+  </div>
+</div>
+
+<!-- main -->
+<div class="pad-t-5 pad-3" id="main">
+  <div class="grid">
+    <div class="card col-6 mg-4 pad-auto">
+      <h3>
+        New Enrollment
+        <span class="mdi mdi-account-plus float-right"></span>
+      </h3>
+    </div>
+    <div class="card col-6 mg-4 pad-auto">
+      <h3>
+        View Enrollments
+        <span class="mdi mdi-account-multiple float-right"></span>
+      </h3>
+    </div>
+  </div>
 </div>

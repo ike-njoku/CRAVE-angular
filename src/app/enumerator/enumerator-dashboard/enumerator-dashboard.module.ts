@@ -5,6 +5,7 @@ import { EnumeratorDashboardRoutingModule } from './enumerator-dashboard-routing
 import { EnumeratorDashboardComponent } from './enumerator-dashboard.component';
 import { EnumeratorDashboardHeaderModule } from './enumerator-dashboard-header/enumerator-dashboard-header.module';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { AuthenticationService } from 'src/app/authentication/authentication.ser
   imports: [
     CommonModule,
     EnumeratorDashboardRoutingModule,
-    EnumeratorDashboardHeaderModule
+    EnumeratorDashboardHeaderModule,
+    RouterModule
   ]
 })
 export class EnumeratorDashboardModule { }

@@ -43,6 +43,10 @@ body {
   padding: 0px;
 }
 
+.pad-auto {
+  padding: auto;
+}
+
 .pad-half {
   padding: 0.5%;
 }

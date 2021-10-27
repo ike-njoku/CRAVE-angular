@@ -49,4 +49,8 @@ export class AuthenticationService {
     console.log(error, 'color: darkblue')
     return throwError('Could not Sign in at this moment')
   }
+
+  signOut(): void {
+    return localStorage.clear();
+  }
 }
