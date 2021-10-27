@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
-import { EnumeratorService } from 'src/app/enumerator/create-enumerator/enumerator.service';
+import { DashboardService } from 'src/app/shared-services/dashboard.service';
 
 @Component({
   selector: 'app-enumerator-dashboard-header',
@@ -10,8 +10,11 @@ import { EnumeratorService } from 'src/app/enumerator/create-enumerator/enumerat
 export class EnumeratorDashboardHeaderComponent implements OnInit {
 
   constructor(
-    public authService: AuthenticationService
+    public authService: AuthenticationService,
+    public dashboardService: DashboardService
   ) { }
+
+
 
   ngOnInit(): void {
   }

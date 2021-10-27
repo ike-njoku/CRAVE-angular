@@ -1,5 +1,7 @@
 <header class="card pad-half grid shd-half">
-  <div class="col-6 text-left"></div>
+  <div class="col-6 text-left">
+    <span style="cursor: pointer;" (click)="dashboardService.toggleSideNav()" class="mdi mdi-menu pad-1"></span>
+  </div>
   <div class="col-6 text-right pad-1">
     <span class="mdi mdi-account-circle"></span>  {{authService.getActiveUserName() | titlecase}}
   </div>
