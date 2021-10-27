@@ -15,7 +15,7 @@ export class AuthenticationService {
   private readonly enumeratorAccessTokenStrringIdentifier = 'crave-sxnzbcqoiplmuyts-2';
   private readonly userNameStringIdentifier = 'crave-in86ybAbvZpxq.7';
   private jwtDecod = jwt_decode;
-  private  activeUser!: ServerSessionDetailDto;
+  public  activeUser!: ServerSessionDetailDto;
   constructor(
     private http: HttpClient
   ) { }
