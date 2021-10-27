@@ -13,7 +13,6 @@ import { EnumeratorComponent } from './enumerator.component';
     CommonModule,
     EnumeratorRoutingModule,
     HttpClientModule,
-
   ]
 })
 export class EnumeratorModule { }
