@@ -1,4 +1,7 @@
 <header class="card pad-half grid">
   <div class="col-6 text-left"></div>
-  <div class="col-6 text-right">ikenjokudc@gmail.com</div>
+
+  <div class="col-6 text-right pad-1">
+    {{authService.getActiveUserName() | titlecase}}
+  </div>
 </header>

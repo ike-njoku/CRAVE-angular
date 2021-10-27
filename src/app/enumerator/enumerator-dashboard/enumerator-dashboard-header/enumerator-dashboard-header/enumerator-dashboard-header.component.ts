@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { EnumeratorService } from 'src/app/enumerator/create-enumerator/enumerator.service';
 
 @Component({
   selector: 'app-enumerator-dashboard-header',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnumeratorDashboardHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public authService: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
   }
