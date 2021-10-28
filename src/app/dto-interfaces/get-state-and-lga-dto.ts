@@ -3,7 +3,10 @@ export interface LGA {
   name: string;
 }
 export interface GetStateAndLgaDto {
-  name: string,
-  id: string | number;
-  locals: LGA[]
+  state: {
+    name: string,
+    id: string | number;
+    locals: LGA[]
+  }
+
 }

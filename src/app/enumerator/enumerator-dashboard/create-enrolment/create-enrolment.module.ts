@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CreateEnrolmentRoutingModule } from './create-enrolment-routing.module';
 import { CreateEnrolmentComponent } from './create-enrolment.component';
 import { UtilityService } from 'src/app/shared-services/utility.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,9 @@ import { UtilityService } from 'src/app/shared-services/utility.service';
   ],
   imports: [
     CommonModule,
-    CreateEnrolmentRoutingModule
+    CreateEnrolmentRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [UtilityService]
 })
