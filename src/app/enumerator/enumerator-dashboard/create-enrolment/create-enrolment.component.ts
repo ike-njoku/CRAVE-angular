@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
 import { GetStateAndLgaDto, LGA } from 'src/app/dto-interfaces/get-state-and-lga-dto';
 import { UtilityService } from 'src/app/shared-services/utility.service';
 
@@ -19,6 +19,7 @@ export class CreateEnrolmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStates();
+    this.getBanks();
   }
 
   getStates() {
@@ -37,6 +38,17 @@ export class CreateEnrolmentComponent implements OnInit {
         this.LGAs = state.state.locals;
       }
     })
+  }
+
+  getBanks() {
+    this.utilityService.getListOfBanksFromFlutterWave()
+      .subscribe(
+        (response: any) => {
+          console.log(response)
+        }, (error: any) => {
+          console.log(error)
+        }
+      )
   }
 
 }

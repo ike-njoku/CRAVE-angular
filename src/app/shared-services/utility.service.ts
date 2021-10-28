@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -20,7 +20,21 @@ export class UtilityService {
       )
   }
 
-  handleError(error: any) {
+  getListOfBanksFromFlutterWave() {
+
+    let header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer FLWSECK-9a596c8767f2e1363127499ac9e6c4bd-X`)
+    }
+
+    const url = 'https://api.flutterwave.com/v3/banks/NG';
+    return this.http.get<any>(url, header)
+      .pipe(
+        (catchError(this.handleError))
+      )
+  }
+
+  private handleError(error: any) {
     console.log(error);
     return throwError('Cannot complete requests at this time. Check log fore mor info')
   }
