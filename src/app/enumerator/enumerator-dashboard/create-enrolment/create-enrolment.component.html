@@ -9,6 +9,13 @@
         <option>Female</option>
       </select>
       <input class="col-6 mg-b-2 mg-2" placeholder="Occupation" type="text">
+      <label class="col-6 mg-2" for="banks"> Select Bank
+        <select style="width: 100%;" id="banks" class="col-6 mg-2">
+          <option *ngFor="let bank of banks">{{bank.name}}</option>
+        </select>
+      </label>
+      <input class="col-6 mg-2" type="text" placeholder="Account Number">
+
       <!-- Residential Address -->
       <div class="col-12">
         <h4>Residential Address</h4>
