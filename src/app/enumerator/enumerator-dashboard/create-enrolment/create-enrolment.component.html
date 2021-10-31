@@ -1,35 +1,42 @@
 <div class="grid">
-  <form class="card col-6 col-sm-full">
+  <form [formGroup]="newEnrolmentForm" class="card col-6 col-sm-full">
     <h2>New Enrollment</h2>
     <div class="grid">
-      <input placeholder="First Name" type="text" class="col-6 mg-b-2 mg-2">
-      <input placeholder="Last Name" type="text" class="col-6 mg-b-2 mg-2">
-      <select class="col-6 mg-2" placeholder="Gender">
+      <input formControlName="firstName" placeholder="First Name" type="text" class="col-6 mg-b-2 mg-2">
+      <input formControlName="lastName" placeholder="Last Name" type="text" class="col-6 mg-b-2 mg-2">
+      <select formControlName="gender" class="col-6 mg-2" placeholder="Gender">
         <option>Male</option>
         <option>Female</option>
       </select>
-      <input class="col-6 mg-b-2 mg-2" placeholder="Occupation" type="text">
+      <input formControlName="occupation" class="col-6 mg-b-2 mg-2" placeholder="Occupation" type="text">
       <label class="col-6 mg-2" for="banks"> Select Bank
         <select style="width: 100%;" id="banks" class="col-6 mg-2">
           <option *ngFor="let bank of banks">{{bank.name}}</option>
         </select>
       </label>
-      <input class="col-6 mg-2" type="text" placeholder="Account Number">
+      <input formControlName="NIN" type="text" placeholder="National Identity Number (NIN)" class="col-6 mg-2">
+      <input formControlName="BVN" type="text" placeholder="Bank Verification Number (BVN)" class="col-6 mg-2">
+      <input formControlName="accountNumber" class="col-6 mg-2" type="text" placeholder="Account Number">
       <!-- Residential Address -->
       <div class="col-12">
         <h4>Permanent Address</h4>
       </div>
       <!-- state -->
-      <select
-      [ngModelOptions]="{standalone: true}"
+      <select formControlName="state"
       [(ngModel)]="selectedState" (ngModelChange)="filterLGAs()" class="col-6 mg-2">
         <option *ngFor="let state of states"> {{state.state.name}} </option>
       </select>
-      <select class="col-6 mg-2">
+      <select formControlName="lga" class="col-6 mg-2">
         <option *ngFor="let lga of LGAs"> {{lga.name}}</option>
       </select>
-      <input class="col-6 mg-b-2 mg-2" placeholder="City" type="text">
-      <input class="col-6 mg-b-2 mg-2" placeholder="Address" type="text">
+      <input formControlName="city" class="col-6 mg-b-2 mg-2" placeholder="City" type="text">
+      <input formControlName="address" class="col-6 mg-b-2 mg-2" placeholder="Address" type="text">
+      <input formControlName="emailAddress" class="col-6 mg-b-2 mg-2" placeholder="Email" type="email">
+      <input formControlName="primaryPhoneNumber" class="col-6 mg-b-2 mg-2" placeholder="Primary Phone Number" type="tel">
+      <input formControlName="secondaryPhoneNumber" class="col-6 mg-b-2 mg-2" placeholder="Primary Phone Number" type="tel">
+      <div class="col-12 mg-t-4 text-center">
+        <button (click)="submitEnrolment()">Submit Enrolment</button>
+      </div>
     </div>
   </form>
 </div>
