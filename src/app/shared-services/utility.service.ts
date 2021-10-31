@@ -20,15 +20,9 @@ export class UtilityService {
       )
   }
 
-  getListOfBanksFromFlutterWave() {
-
-    let header = {
-      headers: new HttpHeaders()
-        .set('Authorization',  `Bearer FLWSECK-9a596c8767f2e1363127499ac9e6c4bd-X`)
-    }
-
-    const url = 'https://api.flutterwave.com/v3/banks/NG';
-    return this.http.get<any>(url, header)
+  getListOfBanks() {
+    const url = 'https://raw.githubusercontent.com/tomiiide/nigerian-banks/master/banks.json';
+    return this.http.get<any>(url)
       .pipe(
         (catchError(this.handleError))
       )

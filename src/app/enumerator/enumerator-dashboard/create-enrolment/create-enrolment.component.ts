@@ -1,5 +1,5 @@
 import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
-import { GetBankFromFlutterwaveDTO } from 'src/app/dto-interfaces/get-bank-from-flutterwave-dto';
+import { GetBankDTO } from 'src/app/dto-interfaces/get-bank-dto';
 import { GetStateAndLgaDto, LGA } from 'src/app/dto-interfaces/get-state-and-lga-dto';
 import { UtilityService } from 'src/app/shared-services/utility.service';
 
@@ -13,7 +13,7 @@ export class CreateEnrolmentComponent implements OnInit {
   states!: GetStateAndLgaDto[];
   LGAs!: LGA[];
   selectedState: GetStateAndLgaDto | any;
-  banks!: GetBankFromFlutterwaveDTO[]
+  banks!: GetBankDTO[]
   constructor(
     private utilityService: UtilityService
   ) { }
@@ -42,7 +42,7 @@ export class CreateEnrolmentComponent implements OnInit {
   }
 
   getBanks() {
-    this.utilityService.getListOfBanksFromFlutterWave()
+    this.utilityService.getListOfBanks()
       .subscribe(
         (response: any) => {
           console.log(response);
