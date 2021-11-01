@@ -12,3 +12,7 @@ select {
   border-radius: 5px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.35);
 }
+
+form button {
+  width: 100%;
+}
