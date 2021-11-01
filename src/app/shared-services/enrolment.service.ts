@@ -11,7 +11,7 @@ import { CreateNewEnrolmentDto } from '../enumerator/enumerator-dashboard/create
 })
 export class EnrolmentService {
   createNewEnrolment(newEnrolment: CreateNewEnrolmentDto): Observable<ServerResponseDTO> {
-    const subUrl = '';
+    const subUrl = 'createEnrolment';
     return this.http.post<ServerResponseDTO>(`${environment.baseUrl}/${subUrl}`, newEnrolment)
       .pipe(
         (catchError(this.handleError))
