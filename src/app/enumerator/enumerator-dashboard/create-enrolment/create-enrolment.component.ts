@@ -1,14 +1,10 @@
-import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Socket } from 'ngx-socket-io';
-import { map } from 'rxjs/operators';
-import { ServerSessionDetailDto } from 'src/app/authentication/server-session-detail-dto';
 import { GetBankDTO } from 'src/app/dto-interfaces/get-bank-dto';
 import { GetStateAndLgaDto, LGA } from 'src/app/dto-interfaces/get-state-and-lga-dto';
-import { ServerResponseDTO } from 'src/app/dto-interfaces/server-response-dto';
 import { EnrolmentService } from 'src/app/shared-services/enrolment.service';
 import { UtilityService } from 'src/app/shared-services/utility.service';
-import { CreateNewEnrolmentDto } from './create-new-enrolment-dto';
 
 @Component({
   selector: 'app-create-enrolment',
@@ -28,7 +24,7 @@ export class CreateEnrolmentComponent implements OnInit {
     private socket: Socket
   ) { }
 
-  public readonly newEnrolmentForm: FormGroup = this.formBuilder.group({
+  public newEnrolmentForm: FormGroup = this.formBuilder.group({
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
     emailAddress: [null],
@@ -49,11 +45,6 @@ export class CreateEnrolmentComponent implements OnInit {
   ngOnInit(): void {
     this.getStates();
     this.getBanks();
-    this.getLastEnrolment()
-  }
-
-  getLastEnrolment() {
-    return this.socket.fromEvent('newEnrolment').pipe(map((data) => console.log(data)));
   }
 
   getStates() {
