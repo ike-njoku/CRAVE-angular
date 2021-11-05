@@ -1,5 +1,7 @@
 import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Socket } from 'ngx-socket-io';
+import { map } from 'rxjs/operators';
 import { ServerSessionDetailDto } from 'src/app/authentication/server-session-detail-dto';
 import { GetBankDTO } from 'src/app/dto-interfaces/get-bank-dto';
 import { GetStateAndLgaDto, LGA } from 'src/app/dto-interfaces/get-state-and-lga-dto';
@@ -22,7 +24,8 @@ export class CreateEnrolmentComponent implements OnInit {
   constructor(
     private utilityService: UtilityService,
     private formBuilder: FormBuilder,
-    private enrolmentService: EnrolmentService
+    private enrolmentService: EnrolmentService,
+    private socket: Socket
   ) { }
 
   public readonly newEnrolmentForm: FormGroup = this.formBuilder.group({
@@ -46,6 +49,11 @@ export class CreateEnrolmentComponent implements OnInit {
   ngOnInit(): void {
     this.getStates();
     this.getBanks();
+    this.getLastEnrolment()
+  }
+
+  getLastEnrolment() {
+    return this.socket.fromEvent('newEnrolment').pipe(map((data) => console.log(data)));
   }
 
   getStates() {
@@ -80,13 +88,5 @@ export class CreateEnrolmentComponent implements OnInit {
 
   submitEnrolment() {
     this.enrolmentService.createNewEnrolment(this.newEnrolmentForm.value)
-      .subscribe(
-        (response: ServerResponseDTO) => {
-          console.log(response)
-        },
-        (error: any) => {
-          console.log(error)
-        }
-      )
   }
 }

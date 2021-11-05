@@ -1,3 +1,5 @@
 .shd-half {
   box-shadow: 1.1px 1.1px 1.1px 1.1px rgba(0, 0, 0, 0.2);
+  background-color: #0f1729;
+  color: white;
 }
