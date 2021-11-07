@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Socket } from 'ngx-socket-io';
 import { GetBankDTO } from 'src/app/dto-interfaces/get-bank-dto';
 import { GetStateAndLgaDto, LGA } from 'src/app/dto-interfaces/get-state-and-lga-dto';
+import { ServerResponseDTO } from 'src/app/dto-interfaces/server-response-dto';
 import { EnrolmentService } from 'src/app/shared-services/enrolment.service';
 import { UtilityService } from 'src/app/shared-services/utility.service';
+import { WebSocketService } from 'src/app/shared-services/web-socket.service';
 
 @Component({
   selector: 'app-create-enrolment',
@@ -21,7 +22,7 @@ export class CreateEnrolmentComponent implements OnInit {
     private utilityService: UtilityService,
     private formBuilder: FormBuilder,
     private enrolmentService: EnrolmentService,
-    private socket: Socket
+    private webSocketService: WebSocketService,
   ) { }
 
   public newEnrolmentForm: FormGroup = this.formBuilder.group({
@@ -33,8 +34,8 @@ export class CreateEnrolmentComponent implements OnInit {
     NIN: [null],
     BVN: [null, Validators.required],
     occupation: [null, Validators.required],
-    state: [null, Validators.required],
-    lga: [null, Validators.required],
+    stateOfOrigin: [null, Validators.required],
+    LGA: [null, Validators.required],
     city: [null, Validators.required],
     address: [null, Validators.required],
     gender: [null, Validators.required],
@@ -45,6 +46,16 @@ export class CreateEnrolmentComponent implements OnInit {
   ngOnInit(): void {
     this.getStates();
     this.getBanks();
+    this.listenForEnrolment();
+  }
+
+  listenForEnrolment() {
+    this.webSocketService.listen('newEnrolment')
+      .subscribe(
+        (response: any) => {
+          console.log(response)
+        }
+      )
   }
 
   getStates() {
@@ -69,7 +80,6 @@ export class CreateEnrolmentComponent implements OnInit {
     this.utilityService.getListOfBanks()
       .subscribe(
         (response: any) => {
-          console.log(response);
           this.banks = response;
         }, (error: any) => {
           console.log(error)
@@ -79,5 +89,9 @@ export class CreateEnrolmentComponent implements OnInit {
 
   submitEnrolment() {
     this.enrolmentService.createNewEnrolment(this.newEnrolmentForm.value)
+      .subscribe(
+        (response: ServerResponseDTO) => console.log(response.message),
+        (error: any) => console.log(error)
+      )
   }
 }

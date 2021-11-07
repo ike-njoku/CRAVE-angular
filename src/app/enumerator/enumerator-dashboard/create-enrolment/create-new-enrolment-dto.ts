@@ -14,4 +14,5 @@ export interface CreateNewEnrolmentDto {
   gender: string,
   primaryPhoneNumber: string,
   secondaryPhoneNumber?: string,
+  enrolledBy: string;
 }

@@ -5,13 +5,13 @@
       <input formControlName="firstName" placeholder="First Name" type="text" class="col-6 mg-b-2 mg-2">
       <input formControlName="lastName" placeholder="Last Name" type="text" class="col-6 mg-b-2 mg-2">
       <select formControlName="gender" class="col-6 mg-2" placeholder="Gender">
-        <option>Male</option>
-        <option>Female</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
       </select>
       <input formControlName="occupation" class="col-6 mg-b-2 mg-2" placeholder="Occupation" type="text">
       <label class="col-6 mg-2" for="banks"> Select Bank
-        <select style="width: 100%;" id="banks" class="col-6 mg-2">
-          <option *ngFor="let bank of banks">{{bank.name}}</option>
+        <select formControlName="bankName" style="width: 100%;" id="banks" class="col-6 mg-2">
+          <option value="{{bank.name}}" *ngFor="let bank of banks">{{bank.name}}</option>
         </select>
       </label>
       <input formControlName="NIN" type="text" placeholder="National Identity Number (NIN)" class="col-6 mg-2">
@@ -22,12 +22,12 @@
         <h4>Permanent Address</h4>
       </div>
       <!-- state -->
-      <select formControlName="state"
+      <select formControlName="stateOfOrigin"
       [(ngModel)]="selectedState" (ngModelChange)="filterLGAs()" class="col-6 mg-2">
-        <option *ngFor="let state of states"> {{state.state.name}} </option>
+        <option value="{{state.state.name}}" *ngFor="let state of states"> {{state.state.name}} </option>
       </select>
-      <select formControlName="lga" class="col-6 mg-2">
-        <option *ngFor="let lga of LGAs"> {{lga.name}}</option>
+      <select formControlName="LGA" class="col-6 mg-2">
+        <option value="{{lga.name}}" *ngFor="let lga of LGAs"> {{lga.name}}</option>
       </select>
       <input formControlName="city" class="col-6 mg-b-2 mg-2" placeholder="City" type="text">
       <input formControlName="address" class="col-6 mg-b-2 mg-2" placeholder="Address" type="text">
