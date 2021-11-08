@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { ServerResponseDTO } from 'src/app/dto-interfaces/server-response-dto';
+import { PopUpNotificationService } from 'src/app/pop-up-notification/pop-up-notification.service';
 
 @Component({
   selector: 'app-enumerator-sign-in',
@@ -19,7 +20,8 @@ export class EnumeratorSignInComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private notificationservice: PopUpNotificationService
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,7 @@ export class EnumeratorSignInComponent implements OnInit {
         (response: ServerResponseDTO) => {
           if (response.status == 'success') this.router.navigate(['enumerator/dashboard']);
         },
-        (error: any) => {console.log(error)}
+        (error: any) => this.notificationservice.addNotification(error, 5000)
       )
   }
 

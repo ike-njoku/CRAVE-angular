@@ -1,1 +1,4 @@
-<p>pop-up-notification works!</p>
+<div *ngIf="notificationService.notification" class="centered pad-2 rad-5">
+  {{notificationService.notification}}
+  <button (click)="notificationService.clearNotification()" class="float-right">Close</button>
+</div>

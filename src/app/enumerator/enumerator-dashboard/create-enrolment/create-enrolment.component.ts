@@ -3,9 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GetBankDTO } from 'src/app/dto-interfaces/get-bank-dto';
 import { GetStateAndLgaDto, LGA } from 'src/app/dto-interfaces/get-state-and-lga-dto';
 import { ServerResponseDTO } from 'src/app/dto-interfaces/server-response-dto';
+import { PopUpNotificationService } from 'src/app/pop-up-notification/pop-up-notification.service';
 import { EnrolmentService } from 'src/app/shared-services/enrolment.service';
 import { UtilityService } from 'src/app/shared-services/utility.service';
 import { WebSocketService } from 'src/app/shared-services/web-socket.service';
+import { GetEnrolmentDTO } from '../../create-enumerator/get-enrolment-dto';
 
 @Component({
   selector: 'app-create-enrolment',
@@ -23,6 +25,7 @@ export class CreateEnrolmentComponent implements OnInit {
     private formBuilder: FormBuilder,
     private enrolmentService: EnrolmentService,
     private webSocketService: WebSocketService,
+    private notificationService: PopUpNotificationService
   ) { }
 
   public newEnrolmentForm: FormGroup = this.formBuilder.group({
@@ -53,7 +56,11 @@ export class CreateEnrolmentComponent implements OnInit {
     this.webSocketService.listen('newEnrolment')
       .subscribe(
         (response: any) => {
-          console.log(response)
+          let mostRecentEnrolment: GetEnrolmentDTO = response;
+          console.log(`new Enumeration by ${mostRecentEnrolment.enrolledBy}`);
+        },
+        (error: any) => {
+          console.log(error)
         }
       )
   }
@@ -64,7 +71,7 @@ export class CreateEnrolmentComponent implements OnInit {
         (response: any) => {
           this.states = response;
         },
-        (error: any) => console.log(error)
+        (error: any) => this.notificationService.addNotification(error + 'Please reload this page')
       )
   }
 
@@ -82,7 +89,7 @@ export class CreateEnrolmentComponent implements OnInit {
         (response: any) => {
           this.banks = response;
         }, (error: any) => {
-          console.log(error)
+          this.notificationService.addNotification(error+ 'Please reload this page')
         }
       )
   }
@@ -90,8 +97,8 @@ export class CreateEnrolmentComponent implements OnInit {
   submitEnrolment() {
     this.enrolmentService.createNewEnrolment(this.newEnrolmentForm.value)
       .subscribe(
-        (response: ServerResponseDTO) => console.log(response.message),
-        (error: any) => console.log(error)
+        (response: ServerResponseDTO) => console.log(response),
+        (error: any) => this.notificationService.addNotification(error, 5000)
       )
   }
 }

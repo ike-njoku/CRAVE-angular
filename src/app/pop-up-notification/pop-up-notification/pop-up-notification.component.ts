@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PopUpNotificationService } from '../pop-up-notification.service';
 
 @Component({
   selector: 'app-pop-up-notification',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopUpNotificationComponent implements OnInit {
 
-  constructor() { }
+  notification!: string;
+  constructor(
+    public notificationService: PopUpNotificationService
+  ) { }
 
   ngOnInit(): void {
+
   }
 
 }

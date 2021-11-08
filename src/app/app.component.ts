@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PopUpNotificationService } from './pop-up-notification/pop-up-notification.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'crave';
+
+  constructor(
+    public notificationService: PopUpNotificationService
+  ) {}
 }

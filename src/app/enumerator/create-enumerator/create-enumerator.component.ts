@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServerResponseDTO } from 'src/app/dto-interfaces/server-response-dto';
+import { PopUpNotificationService } from 'src/app/pop-up-notification/pop-up-notification.service';
 import { EnumeratorService } from './enumerator.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class CreateEnumeratorComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private enumeratorService: EnumeratorService,
-    private router: Router
+    private router: Router,
+    private notificationService: PopUpNotificationService
   ) { }
 
   createEnumeratorForm: FormGroup = this.formBuilder.group({
@@ -29,17 +31,13 @@ export class CreateEnumeratorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkEmail() {
-
-  }
-
   getEnumerators() {
     this.enumeratorService.getAllEnumerators()
       .subscribe(
         (response: any) => {
           console.log(response)
         },
-        (error: any) => console.log(error)
+        (error: any) => this.notificationService.addNotification(error, 5000)
       )
   }
 
@@ -54,7 +52,7 @@ export class CreateEnumeratorComponent implements OnInit {
           this.submitting = false;
         },
         (error: any) => {
-          console.log(error);
+          this.notificationService.addNotification(error, 5000)
           this.submitting = false;
         }
       )
