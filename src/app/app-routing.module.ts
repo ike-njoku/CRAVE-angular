@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'index', loadChildren: () => import('./index/index.module').then(m => m.IndexModule) },
   { path: 'enumerator', loadChildren: () => import('./enumerator/enumerator.module').then(m => m.EnumeratorModule) },
   { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
 ];
 
 @NgModule({
