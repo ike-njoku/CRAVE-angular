@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardIndexRoutingModule } from './dashboard-index-routing.module';
 import { DashboardIndexComponent } from './dashboard-index.component';
+import { CreateClientModule } from '../create-client/create-client.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { DashboardIndexComponent } from './dashboard-index.component';
   ],
   imports: [
     CommonModule,
-    DashboardIndexRoutingModule
+    DashboardIndexRoutingModule,
+    CreateClientModule
   ]
 })
 export class DashboardIndexModule { }

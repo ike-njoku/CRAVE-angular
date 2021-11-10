@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CreateEnumeratorDto } from './create-enumerator-dto';
 import { catchError } from 'rxjs/operators';
+import { ServerResponseDTO, ServerResponseDtoStatus } from 'src/app/dto-interfaces/server-response-dto';
 
 
 @Injectable({
@@ -23,8 +24,8 @@ export class EnumeratorService {
       )
   }
 
-  getAllEnumerators(): Observable<any> {
-    return this.http.get(`${environment.baseUrl}/api/enumerator/list`)
+  getAllEnumerators(): Observable<ServerResponseDTO> {
+    return this.http.get<ServerResponseDTO>(`${environment.baseUrl}/api/enumerator/list`)
     .pipe(
       (catchError(this.handleError))
     )

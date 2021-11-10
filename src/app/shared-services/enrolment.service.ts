@@ -27,6 +27,14 @@ export class EnrolmentService {
       )
   }
 
+  getAllEnrolments(): Observable<ServerResponseDTO> {
+    const subUrl = 'enrolment/list';
+    return this.http.get<ServerResponseDTO>(`${environment.baseUrl}/${subUrl}`)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
   private handleError(error: any) {
     console.error(error)
     return throwError('Could not Complete request at this time. See consle for more')
