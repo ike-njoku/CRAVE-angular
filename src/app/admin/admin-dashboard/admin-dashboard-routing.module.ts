@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard.component';
 
-const routes: Routes = [{ path: '', component: AdminDashboardComponent }];
+const routes: Routes = [
+  { path: '', component: AdminDashboardComponent, children: [
+    { path: 'home', loadChildren: () => import('./dashboard-index/dashboard-index.module').then(m => m.DashboardIndexModule) }
+  ] },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
