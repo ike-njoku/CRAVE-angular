@@ -44,6 +44,7 @@ export class CreateEnrolmentComponent implements OnInit {
     gender: [null, Validators.required],
     primaryPhoneNumber: [null, Validators.required],
     secondaryPhoneNumber: [null],
+    VRN: [null]
   });
 
   ngOnInit(): void {

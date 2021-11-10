@@ -14,5 +14,6 @@ export interface GetEnrolmentDTO {
   gender: string,
   primaryPhoneNumber: string,
   secondaryPhoneNumber?: string,
-  enrolledBy: string
+  enrolledBy: string,
+  VRN?: string
 }
