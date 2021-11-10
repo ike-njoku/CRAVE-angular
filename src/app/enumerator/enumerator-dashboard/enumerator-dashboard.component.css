@@ -4,18 +4,27 @@
   width: 25%;
   height: 100vh;
   overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #045653;
   position: fixed;
   transition: all 0.5s;
 }
 
 #side-nav button {
   display: block;
-  padding: 5%;
+  padding: 3%;
+  width: 100%;
   margin: auto;
   margin-bottom: 4%;
-  width: 100%;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
   text-align: left;
+  background-color: #04A353;
+}
+
+.sign-out-button {
+  position: absolute;
+  max-width: 80%;
+  bottom: 7%;
 }
 
 #side-nav.active {
@@ -41,3 +50,4 @@
   border-radius: 5px;
   height: 150%;
 }
+

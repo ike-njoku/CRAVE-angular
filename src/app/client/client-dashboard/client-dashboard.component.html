@@ -1,1 +1,29 @@
-<p>client-dashboard works!</p>
+<div id="side-nav">
+  <div class="new-notification-bar">
+    <span class="mdi mdi-account-multiple-plus">
+      <span class="pad-2" style="color: green;"> {{enrolments}}</span>
+    </span>
+  </div>
+  <div class="text-center mg-t-3">
+    <img class="mg-auto" height="150" width="150" class="rad-360"
+    src="../../../assets/sample-images/crave-project-sample-profile-image-removebg-preview.png" alt="">
+  </div>
+  <div class="mg-t-10 text-center">
+    Target: <span class="mg-l-4"> 420,129 </span>
+  </div>
+  <div class="mg-t-10 text-center">
+    Total Registered Voters: <span class="mg-l-4"> {{enrolments}} </span>
+  </div>
+  <div class="text-center">
+    <button><b>Sign Out</b></button>
+  </div>
+</div>
+<div id="main">
+  <div style="height: 100vh; overflow: hidden;">
+    <div class="mg-5">
+      <h2>Taraba State Guber</h2>
+    </div>
+    <iframe src="http://127.0.0.1:8080/try-js-map/" frameborder="0"
+      height="100%" width="100%"></iframe>
+  </div>
+</div>

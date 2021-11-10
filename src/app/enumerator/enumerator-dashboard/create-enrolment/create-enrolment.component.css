@@ -16,4 +16,7 @@ select {
 form button {
   width: 100%;
   background-color: #04A353;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-top: 15%;
 }

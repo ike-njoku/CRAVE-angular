@@ -97,7 +97,11 @@ export class CreateEnrolmentComponent implements OnInit {
   submitEnrolment() {
     this.enrolmentService.createNewEnrolment(this.newEnrolmentForm.value)
       .subscribe(
-        (response: ServerResponseDTO) => console.log(response),
+        (response: ServerResponseDTO) => {
+          console.log(response)
+          this.notificationService.addNotification('Enrolment was successful', 5000);
+
+        },
         (error: any) => this.notificationService.addNotification(error, 5000)
       )
   }
