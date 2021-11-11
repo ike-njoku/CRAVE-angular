@@ -1,14 +1,14 @@
 
 <div class="grid">
-  <div class="col-4 card">
+  <div *ngIf="allEnrolments" class="col-4 card">
     <h2>
-      {{allEnrolments.length}} Enrolments <span class="mdi mdi-menu float-right"></span>
+      {{totalEnrolments}} Enrolments <span class="mdi mdi-menu float-right"></span>
     </h2>
   </div>
 
-  <div class="col-4 card">
+  <div *ngIf="allEnumerators" class="col-4 card">
     <h2>
-      {{allEnumerators.length}} Enumerators <span class="mdi mdi-account-multiple float-right"></span>
+      {{totalEnumerators}} Enumerators <span class="mdi mdi-account-multiple float-right"></span>
     </h2>
   </div>
 
@@ -19,6 +19,6 @@
   </div>
 </div>
 
-<div class="grid mg-t-5 mg-3">
-  <app-create-client class="col-8"></app-create-client>
+<div class="grid mg-t-3 mg-3">
+  <app-create-client class="col-5"></app-create-client>
 </div>

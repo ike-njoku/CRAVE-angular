@@ -3,6 +3,7 @@ import { ServerResponseDTO } from 'src/app/dto-interfaces/server-response-dto';
 import { EnumeratorService } from 'src/app/enumerator/create-enumerator/enumerator.service';
 import { GetEnumeratorDto } from 'src/app/enumerator/get-enumerator-dto';
 import { EnrolmentService } from 'src/app/shared-services/enrolment.service';
+import { WebSocketService } from 'src/app/shared-services/web-socket.service';
 
 @Component({
   selector: 'app-dashboard-index',
@@ -11,16 +12,29 @@ import { EnrolmentService } from 'src/app/shared-services/enrolment.service';
 })
 export class DashboardIndexComponent implements OnInit {
   allEnumerators!: GetEnumeratorDto[];
-  allEnrolments: any;
+  allEnrolments!: any[];
+  totalEnrolments!: number;
+  totalEnumerators!: number;
 
   constructor(
     private enumeratorService: EnumeratorService,
-    private enrolmentService: EnrolmentService
+    private enrolmentService: EnrolmentService,
+    private webSocketService: WebSocketService
   ) { }
 
   ngOnInit(): void {
     this.getAllEnumerators();
     this.getAllEnrolments();
+    this.listenForNewEnrolment();
+  }
+
+  listenForNewEnrolment() {
+    this.webSocketService.listen('newEnrolment')
+      .subscribe(
+        (response: any) => {
+          this.totalEnrolments += 1;
+        }
+      )
   }
 
   getAllEnrolments() {
@@ -28,6 +42,7 @@ export class DashboardIndexComponent implements OnInit {
       .subscribe(
         (response: ServerResponseDTO) => {
           this.allEnrolments = response.data;
+          this.totalEnrolments = this.allEnrolments.length;
         },
         (error: any) => console.log(error)
       )
@@ -38,6 +53,7 @@ export class DashboardIndexComponent implements OnInit {
       .subscribe(
         (response: ServerResponseDTO) => {
           this.allEnumerators = response.data;
+          this.totalEnumerators = this.allEnumerators.length;
         }
       ),
       (error: string) => {

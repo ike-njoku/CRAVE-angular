@@ -1,1 +1,23 @@
-<p>create-client works!</p>
+<form class="card">
+  <div class="text-center">
+    <h2>Create New Client</h2>
+  </div>
+  <div class="grid">
+    <div class="text-center col-12 mg-b-4">
+      <img height="120" class="rad-360"
+        src="{{selectedFileUrl}}" alt="">
+    </div>
+    <input class="col-12" placeholder="First Name" type="text">
+    <input class="col-12" placeholder="Last Name" type="text">
+    <input class="col-12" placeholder="First Name" type="text">
+    <input class="col-12" placeholder="Email Address" type="text">
+    <select class="col-12">
+      <option>Select State</option>
+    </select>
+    <select class="col-12">
+      <option>LGA</option>
+    </select>
+    <input type="button" class="col-12" (click)="fileInput.click()" value="Upload Profile Photo">
+    <input (change)="selectPhoto($event)" hidden #fileInput class="col-12" type="file" name="" id="">
+  </div>
+</form>

@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-client.component.css']
 })
 export class CreateClientComponent implements OnInit {
+  selectedFileUrl: any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  selectPhoto(event: any) {
+   let fileReader = new FileReader();
+
+    fileReader.onload = () => {
+      this.selectedFileUrl = fileReader.result
+    }
+   fileReader.readAsDataURL(event.target.files[0])
+  }
 }
